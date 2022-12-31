@@ -39,9 +39,56 @@ package Chapter01_basic;
 import java.util.Scanner;
 
 public class Minesweeper {
+    static Character[][] field;
+    static Character[][] result;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        int num = 0;
+        while (true) {
+            num++;
+            int m = sc.nextInt();
+            int n = sc.nextInt();
+            if (m == 0 && n == 0) break;
+
+            field = new Character[m][n];
+            result = new Character[m][n];
+
+            String input;
+            for (int i = 0; i < m; i++) {
+                input = sc.next();
+                for (int j = 0; j < n; j++) {
+                    field[i][j] = input.charAt(j);
+                }
+            }
+
+            System.out.println("Field #" + num + ":");
+
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (field[i][j] == '*') System.out.print('*');
+                    else {
+                        System.out.print(count_landmine(i, j, m, n));
+                    }
+                }
+                System.out.println();
+            }
+        }
+
+    }
+    static int count_landmine(int x, int y, int m, int n) {
+        int[] bx = {1, 1, 0, -1, -1, -1, 0, 1};
+        int[] by = {0, 1, 1, 1, 0, -1, -1, -1};
+        int cnt = 0;
+
+        for (int i = 0; i < 8; i++) {
+            int mx = x + bx[i];
+            int my = y + by[i];
+            if(mx >= 0 && mx < n && my >= 0 && my < m) {
+                if(field[mx][my] == '*') cnt++;
+            }
+        }
+        return cnt;
 
     }
 }
