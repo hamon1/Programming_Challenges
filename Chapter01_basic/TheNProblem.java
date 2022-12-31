@@ -9,16 +9,20 @@
 n이라는 값이 입력되었을 때 1이 나올 때까지 만들어진 수의 개수(1 포함)를 n의 사이클 길이(cycle-length)라고 한다.
 위에 있는 수열을 예로 들면 22의 사이클 길이는 16이다.
 i와 j라는 두 개의 수가 주어졌을 때 i와 j 사이의 모든 수(i, j 포함)에 대해 최대 사이클 길이를 구하라.
+
 <입력>
 입력은 일련의 정수쌍 i와 j로 구성되며 한 줄에 한 쌍의 수가 입력된다.
 모든 정수는 1,000,000보다 작고 0보다 크다.
 <출력>
+
 각 정수쌍 i와 j에 대해 i와 j를 입력된 순서대로 출력하고 i와 j 사이의 최대 사이클 길이를 출력한다.
 이 세 수는 각각 하나씩의 스페이스로 구분되어야 하며 세 수가 모두 한 줄에 출력되어야 하고 입력된 각 줄마다 한 줄씩 출력해야 한다.
+
 1 10
 100 200
 201 210
 900 1000
+
 1 10 20
 100 200 125
 201 210 89
@@ -31,9 +35,34 @@ package Chapter01_basic;
 import java.util.Scanner;
 
 public class TheNProblem {
+    public static int max = -1;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        while(sc.hasNext()) {
+            int i = sc.nextInt();
+            int j = sc.nextInt();
 
+            for (int a = i; a <= j; a++) {
+                cycle(a, 0);
+            }
+            System.out.println(i + " " + j + " " + max);
+            max = 0;
+        }
+
+    }
+    static void cycle(int n, int cnt) {
+        if (n == 1) {
+            cnt++;
+            if (max < cnt) max = cnt;
+            return;
+        }
+
+        if (n % 2 == 0) {
+            cycle(n/2, cnt+1);
+        }
+        else {
+            cycle(n*3 + 1, cnt+1);
+        }
     }
 }
