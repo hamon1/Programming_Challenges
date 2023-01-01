@@ -35,8 +35,30 @@
 
 package Chapter01_basic;
 
-public class TheTrip {
-    public static void main(String[] args) {
+import java.util.Scanner;
 
+public class TheTrip {
+    public static float[] m_list;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while(true) {
+            int n = sc.nextInt();
+            if (n == 0) break;
+
+            m_list = new float[n];
+
+            double av = 0;
+            for (int i = 0; i < n; i++) {
+                float a = sc.nextFloat();
+                m_list[i] = a;
+                av += a;
+            }
+
+            av /= n;
+            av = Math.floor(av*1000)/1000.0;
+
+        }
     }
+
 }
