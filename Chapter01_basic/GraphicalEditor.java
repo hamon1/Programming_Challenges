@@ -134,7 +134,7 @@ public class GraphicalEditor {
     }
     public static void V_line (int x, int y1, int y2, char color) {
         if (img.length > y2 && img[0].length > x) {
-            for (int i = y1-1; i < y2-1; i++) {
+            for (int i = y1-1; i <= y2-1; i++) {
                 img[i][x-1] = color;
             }
         }
@@ -144,7 +144,7 @@ public class GraphicalEditor {
     }
     public static void H_line (int x1, int x2, int y, char color) {
         if (img.length > y && img[0].length > x2) {
-            for (int i = x1-1; i < x2-1; i++) {
+            for (int i = x1-1; i <= x2-1; i++) {
                 img[y-1][i] = color;
             }
         }
@@ -152,7 +152,7 @@ public class GraphicalEditor {
             System.out.println("V - ERROR");
         }
     }
-    public static void K_squire (int x1, int x2, int y1, int y2, char color) {
+    public static void K_squire (int x1, int y1, int x2, int y2, char color) {
         if (img.length > y2 && img[0].length > x2) {
             for (int j = y1-1; j < y2-1; j++) {
             for (int i = x1-1; i < x2-1; i++) {
@@ -165,7 +165,6 @@ public class GraphicalEditor {
             System.out.println("K - ERROR");
         }
     }
-    //*****************************************************************
     public static void F (int y, int x, char color) {
         char basic_color = img[x-1][y-1];
         img[x-1][y-1] = color;
@@ -173,7 +172,7 @@ public class GraphicalEditor {
         change_color(x-1, y-1, basic_color, color);
     }
     static void change_color (int x, int y, char basic_color, char color) {
-        if (img[x][y] != basic_color || img[x][y] != color) {
+        if (img[x][y] != basic_color && img[x][y] != color) {
             return;
         }
 
