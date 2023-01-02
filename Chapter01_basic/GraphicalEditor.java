@@ -14,7 +14,7 @@
 색은 대문자로 지정된다.
 편집기에서 받아들이는 명령은 다음과 같다.
 
-I M M               모든 픽셀이 흰색(O)으로 칠해진 M*N 이미지를 새로 만든다.
+I M N               모든 픽셀이 흰색(O)으로 칠해진 M*N 이미지를 새로 만든다.
 C                   모든 픽셀을 흰색(O)으로 칠해서 표를 지운다. 이미지의 크기는 바뀌지 않는다.
 L X Y C             (X, Y) 픽셀을 주어진 색(C)으로 칠한다.
 V X Y1 Y2 C         X열에 Y1행과 Y2행(y1, y2 포함) 사이에 주어진 색(C)으로 수직 방향 직선을 긋는다.
@@ -63,5 +63,143 @@ JJJJJ
 
 package Chapter01_basic;
 
+import java.util.Scanner;
+
 public class GraphicalEditor {
+    static char[][] img;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        boolean end = true;
+        while(end) {
+            String input = sc.next();
+            char command = input.charAt(0);
+
+            switch (command) {
+                case 'I':
+                    I_new_img(sc.nextInt(), sc.nextInt());
+                    break;
+                case 'C':
+                    C_clear();
+                    break;
+                case 'L':
+                    L_point_color(sc.nextInt(), sc.nextInt(), sc.next().charAt(0));
+                    break;
+                case 'V':
+                    V_line(sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.next().charAt(0));
+                    break;
+                case 'H':
+                    H_line(sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.next().charAt(0));
+                    break;
+                case 'K':
+                    K_squire(sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.next().charAt(0));
+                    break;
+                case 'F':
+                    F(sc.nextInt(), sc.nextInt(), sc.next().charAt(0));
+                    break;
+                case 'S':
+                    S_print_file(sc.next());
+                    break;
+                case 'X':
+                    end = false;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    }
+    public static void I_new_img (int n, int m) {
+        img = new char[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                img[i][j] = 'O';
+            }
+        }
+    }
+    public static void C_clear () {
+        for (int i = 0; i < img.length; i++) {
+            for (int j = 0; j < img[0].length; j++) {
+                img[i][j] = 'O';
+            }
+        }
+    }
+    public static void L_point_color (int y, int x, char color) {
+        if (img.length > x && img[0].length > y) {
+            img[x-1][y-1] = color;
+        }
+        else {
+            System.out.println("L - ERROR");
+        }
+    }
+    public static void V_line (int x, int y1, int y2, char color) {
+        if (img.length > y2 && img[0].length > x) {
+            for (int i = y1-1; i < y2-1; i++) {
+                img[i][x-1] = color;
+            }
+        }
+        else {
+            System.out.println("V - ERROR");
+        }
+    }
+    public static void H_line (int x1, int x2, int y, char color) {
+        if (img.length > y && img[0].length > x2) {
+            for (int i = x1-1; i < x2-1; i++) {
+                img[y-1][i] = color;
+            }
+        }
+        else {
+            System.out.println("V - ERROR");
+        }
+    }
+    public static void K_squire (int x1, int x2, int y1, int y2, char color) {
+        if (img.length > y2 && img[0].length > x2) {
+            for (int j = y1-1; j < y2-1; j++) {
+            for (int i = x1-1; i < x2-1; i++) {
+
+                    img[j][i] = color;
+                }
+            }
+        }
+        else {
+            System.out.println("K - ERROR");
+        }
+    }
+    //*****************************************************************
+    public static void F (int y, int x, char color) {
+        char basic_color = img[x-1][y-1];
+        img[x-1][y-1] = color;
+
+        change_color(x-1, y-1, basic_color, color);
+    }
+    static void change_color (int x, int y, char basic_color, char color) {
+        if (img[x][y] != basic_color || img[x][y] != color) {
+            return;
+        }
+
+        int[] bx = {1, 1, 0, -1, -1, -1, 0, 1};
+        int[] by = {0, 1, 1, 1, 0, -1, -1, -1};
+
+        for (int i = 0; i < 8; i++) {
+            int mx = x + bx[i];
+            int my = y + by[i];
+
+            if (mx >= 0 && mx < img.length && my >= 0 && my < img[0].length) {
+                if (img[mx][my] == basic_color) {
+                    img[mx][my] = color;
+                    change_color(mx, my, basic_color, color);
+                }
+            }
+        }
+    }
+
+    public static void S_print_file (String file_name) {
+        System.out.println(file_name);
+        for (int i = 0; i < img.length; i++) {
+            for (int j = 0; j < img[0].length; j++) {
+                System.out.print(img[i][j]);
+            }
+            System.out.println();
+        }
+    }
 }
