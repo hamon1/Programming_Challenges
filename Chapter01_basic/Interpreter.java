@@ -56,8 +56,56 @@
 
 package Chapter01_basic;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Interpreter {
+    static int cnt = 0;
+    private static boolean end = true;
+    public static ArrayList<String> RAM = new ArrayList<>();
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            RAM.add(sc.next());
+        }
 
     }
+    public static void command(int code, int a, int b) {
+        int n;
+        switch (code) {
+            case 1:
+                if (a == 0 && b == 0) {
+                    cnt++;
+                    quit();
+                    break;
+                }
+            case 2:
+                RAM.set(a, "00" + b);
+                break;
+            case 3:
+                n = Integer.parseInt(RAM.get(a));
+                n = (n + b)%1000;
+                RAM.set(a, Integer.toString(n));
+                break;
+            case 4:
+                n = Integer.parseInt(RAM.get(a));
+                n = (n * b)%1000;
+                RAM.set(a, Integer.toString(n));
+                break;
+            case 5:
+                RAM.set(a, RAM.get(b));
+                break;
+            case 6:
+
+        }
+    }
+    public static void quit () {
+        end = false;
+        System.out.println(cnt);
+        return;
+    }
+
 }
