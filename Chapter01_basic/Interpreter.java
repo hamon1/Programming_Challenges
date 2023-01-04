@@ -83,23 +83,50 @@ public class Interpreter {
                     break;
                 }
             case 2:
+                cnt++;
                 RAM.set(a, "00" + b);
                 break;
             case 3:
+                cnt++;
                 n = Integer.parseInt(RAM.get(a));
                 n = (n + b)%1000;
                 RAM.set(a, Integer.toString(n));
                 break;
             case 4:
+                cnt++;
                 n = Integer.parseInt(RAM.get(a));
                 n = (n * b)%1000;
                 RAM.set(a, Integer.toString(n));
                 break;
             case 5:
+                cnt++;
                 RAM.set(a, RAM.get(b));
                 break;
             case 6:
-
+                cnt++;
+                n = Integer.parseInt(RAM.get(a));
+                n += (Integer.parseInt((RAM.get(b))))%1000;
+                RAM.set(a, Integer.toString(n));
+                break;
+            case 7:
+                cnt++;
+                n = Integer.parseInt(RAM.get(a));
+                n *= (Integer.parseInt((RAM.get(b))))%1000;
+                RAM.set(a, Integer.toString(n));
+                break;
+            case 8:
+                cnt++;
+                //a 레지스터를 b 레지스터에 저장된 주소의 램에 들어있는 값으로 설정
+                break;
+            case 9:
+                cnt++;
+                //b 레지스터에 저장된 주소의 램에 a 레지스터 값 저장
+                break;
+            case 0:
+                n = Integer.parseInt(RAM.get(b));
+                if (n != 0) {
+                    //a 레지스터에 있는 위치로 이동
+                }
         }
     }
     public static void quit () {
