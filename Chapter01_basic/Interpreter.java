@@ -69,7 +69,18 @@ public class Interpreter {
         int n = sc.nextInt();
 
         for (int i = 0; i < n; i++) {
-            RAM.add(sc.next());
+            while(sc.hasNext()) {
+                RAM.add(sc.next());
+            }
+        }
+
+        for (int i = 0; i < RAM.size(); i++) {
+            String s = RAM.get(i);
+            int number = Integer.parseInt(s);
+            int a = number/100;
+            int b = (number%100)/10;
+            int c = ((number%100)%10);
+            command(a, b, c);
         }
 
     }
