@@ -23,5 +23,49 @@ Not jolly
 
 package Chapter02_DataStructure;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class JollyJumpers {
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        ArrayList<Integer> numbers = new ArrayList<>();
+        while(sc.hasNext()) {
+            int n = sc.nextInt();
+            for (int i = 0; i < n; i++) {
+                numbers.add(sc.nextInt());
+            }
+            boolean[] checkList = new boolean[n];
+
+            search(numbers, checkList);
+            if (check_jolly(checkList)) System.out.println("Jolly");
+            else System.out.println("Not jolly");
+        }
+    }
+    static void search(ArrayList<Integer> numbers, boolean[] checkList) {
+        if (numbers.size() == 1) {
+            checkList[1] = true;
+            return;
+        }
+        int a = numbers.get(0);
+        for (int i = 1; i < numbers.size(); i++) {
+            int n = numbers.get(i);
+            int k = absoluteValue(n, a);
+            if (k >= checkList.length) return;
+            checkList[k] = true;
+            a = n;
+        }
+    }
+    static boolean check_jolly (boolean[] checkList) {
+        for (int i = 1; i < checkList.length; i++) {
+            if (checkList[i] == false) return false;
+        }
+        return true;
+    }
+    static int absoluteValue(int a, int b) {
+        int result = a - b;
+        if (result > 0) return result;
+        else return result*(-1);
+    }
 }
