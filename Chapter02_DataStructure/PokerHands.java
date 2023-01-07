@@ -56,13 +56,14 @@ Tie.
 
 package Chapter02_DataStructure;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class PokerHands {
     static int b_score;
     static int w_score;
-    static char extra_b_score;
-    static char extra_w_score;
+    static int extra_b_score;
+    static int extra_w_score;
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -91,11 +92,11 @@ public class PokerHands {
             if (cnt == 4) {
                 if (who == 0) {
                     b_score = 8;
-                    extra_b_score = b;
+                    extra_b_score = number_change(b);
                 }
                 else {
                     w_score = 8;
-                    extra_w_score = b;
+                    extra_w_score = number_change(b);
                 }
                 return true;
             }
@@ -122,11 +123,11 @@ public class PokerHands {
             if (cnt1 == 3 && cnt2 == 2) {
                 if (who == 0) {
                     b_score = 7;
-                    extra_b_score = b;
+                    extra_b_score = number_change(b);
                 }
                 else {
                     w_score = 7;
-                    extra_w_score = b;
+                    extra_w_score = number_change(b);
                 }
                 return true;
             }
@@ -134,10 +135,32 @@ public class PokerHands {
         return false;
     }
     static boolean Flush(String[] cards) {
-
+        char img = cards[0].charAt(1);
+        for (int i = 0; i < 5; i++) {
+            if (cards[i].charAt(1) != img) return false;
+        }
+        High_Card(cards);
+        return true;
     }
-    static boolean Straight(String[] cards) {
-
+    static boolean Straight(String[] cards, int who) {
+        int[] number_list = new int[5];
+        for (int i = 0; i < 5; i++) {
+            char a = cards[i].charAt(0);
+            number_list[i] = number_change(a);
+        }
+        Arrays.sort(number_list);
+        int n = number_list[0];
+        for (int i = 1; i < 5; i++) {
+            int nn = number_list[i];
+            if (nn - n != 1) return false;
+        }
+        if (who == 0) {
+            extra_b_score = number_list[4];
+        }
+        else {
+            extra_w_score = number_list[4];
+        }
+        return true;
     }
     static void Three_Card(String[] cards) {
 
@@ -150,5 +173,35 @@ public class PokerHands {
     }
     static void High_Card(String[] cards) {
 
+    }
+    static int number_change(char code) {
+        switch (code) {
+            case '2':
+                return 2;
+            case '3':
+                return 3;
+            case '4':
+                return 4;
+            case '5':
+                return 5;
+            case '6':
+                return 6;
+            case '7':
+                return 7;
+            case '8':
+                return 8;
+            case '9':
+                return 9;
+            case 'J':
+                return 10;
+            case 'Q':
+                return 11;
+            case 'K':
+                return 12;
+            case 'A':
+                return 13;
+            default:
+                return -1;
+        }
     }
 }
