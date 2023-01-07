@@ -56,5 +56,99 @@ Tie.
 
 package Chapter02_DataStructure;
 
+import java.util.Scanner;
+
 public class PokerHands {
+    static int b_score;
+    static int w_score;
+    static char extra_b_score;
+    static char extra_w_score;
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while(sc.hasNext()) {
+            b_score = 0;
+            w_score = 0;
+            String[] cards = new String[10];
+            for (int i = 0; i < 10; i++) {
+                cards[i] = sc.next();
+            }
+        }
+
+
+    }
+    static boolean Straight_Flush (String[] cards) {
+        if (Straight(cards) && Flush(cards)) return true;
+        else return false;
+    }
+    static boolean Four_Card(String[] cards, int who) {
+        int cnt = 0;
+        for (int i = 0; i < 5; i++) {
+            char b = cards[i].charAt(0);
+            for (int j = 0; j < 5; j++) {
+                if (cards[j].charAt(0) == b) cnt++;
+            }
+            if (cnt == 4) {
+                if (who == 0) {
+                    b_score = 8;
+                    extra_b_score = b;
+                }
+                else {
+                    w_score = 8;
+                    extra_w_score = b;
+                }
+                return true;
+            }
+        }
+        return false;
+
+    }
+    static boolean Full_House(String[] cards, int who) {
+        int cnt1 = 0;
+        int cnt2 = 0;
+        char b = cards[0].charAt(0);
+        char c = '*';
+            for (int j = 0; j < 5; j++) {
+                char k = cards[j].charAt(0);
+                if (k == b) cnt1++;
+                else {
+                    if (cnt2 == 0) {
+                        c = k;
+                        cnt2++;
+                    }
+                    if (k == c) cnt2++;
+                }
+            }
+            if (cnt1 == 3 && cnt2 == 2) {
+                if (who == 0) {
+                    b_score = 7;
+                    extra_b_score = b;
+                }
+                else {
+                    w_score = 7;
+                    extra_w_score = b;
+                }
+                return true;
+            }
+
+        return false;
+    }
+    static boolean Flush(String[] cards) {
+
+    }
+    static boolean Straight(String[] cards) {
+
+    }
+    static void Three_Card(String[] cards) {
+
+    }
+    static void Two_Pair(String[] cards) {
+
+    }
+    static void One_Pair(String[] cards) {
+
+    }
+    static void High_Card(String[] cards) {
+
+    }
 }
