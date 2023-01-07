@@ -78,8 +78,8 @@ public class PokerHands {
 
 
     }
-    static boolean Straight_Flush (String[] cards) {
-        if (Straight(cards) && Flush(cards)) return true;
+    static boolean Straight_Flush (String[] cards, int who) {
+        if (Straight(cards, who) && Flush(cards)) return true;
         else return false;
     }
     static boolean Four_Card(String[] cards, int who) {
@@ -162,8 +162,26 @@ public class PokerHands {
         }
         return true;
     }
-    static void Three_Card(String[] cards) {
-
+    static boolean Three_Card(String[] cards, int who) {
+        int cnt = 0;
+        for (int i = 0; i < 5; i++) {
+            char b = cards[i].charAt(0);
+            for (int j = 0; j < 5; j++) {
+                if (cards[j].charAt(0) == b) cnt++;
+            }
+            if (cnt == 3) {
+                if (who == 0) {
+                    b_score = 8;
+                    extra_b_score = number_change(b);
+                }
+                else {
+                    w_score = 8;
+                    extra_w_score = number_change(b);
+                }
+                return true;
+            }
+        }
+        return false;
     }
     static void Two_Pair(String[] cards) {
 
