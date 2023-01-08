@@ -191,8 +191,17 @@ public class PokerHands {
         }
         return false;
     }
-    static void Two_Pair(String[] cards) {
+    static boolean Two_Pair(String[] cards, int who) {
+        int[] number_list = new int[5];
+        for (int i = 0; i < 5; i++) {
+            char a = cards[i].charAt(0);
+            number_list[i] = number_change(a);
+        }
+        Arrays.sort(number_list);
+        if (number_list[0] == number_list[1] && number_list[2] == number_list[3]) {
 
+        }
+        if (number_list[0] == number_list[1] && number_list[2] == number_list[3])
     }
     static void One_Pair(String[] cards) {
 
