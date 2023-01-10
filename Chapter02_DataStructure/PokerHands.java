@@ -79,7 +79,7 @@ public class PokerHands {
 
     }
     static boolean Straight_Flush (String[] cards, int who) {
-        if (Straight(cards, who) && Flush(cards)) {
+        if (Straight(cards, who) && Flush(cards, who)) {
             if (who == 0) b_score = 9;
             else w_score = 9;
             return true;
@@ -201,7 +201,8 @@ public class PokerHands {
         if (number_list[0] == number_list[1] && number_list[2] == number_list[3]) {
 
         }
-        if (number_list[0] == number_list[1] && number_list[2] == number_list[3])
+        if (number_list[0] == number_list[1] && number_list[2] == number_list[3]) {}
+        return true;
     }
     static void One_Pair(String[] cards) {
 
