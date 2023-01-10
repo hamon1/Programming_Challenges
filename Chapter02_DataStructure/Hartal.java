@@ -25,7 +25,6 @@ N일(N=14)일 동안의 세 당의 행보를 시뮬레이션하면 다음과 같
 각 테스트 케이스에 대해 손실된 근무 일수를 한 줄에 하나씩 출력한다.
 
 2
-
 14
 3
 3
@@ -63,6 +62,20 @@ public class Hartal {
                 hartal_list[j] = sc.nextInt();
             }
 
+            System.out.println(hartal_return(hartal_list, day));
         }
+    }
+    static int hartal_return(int[] list, int day) {
+        int cnt = 0;
+        for (int i = 1; i <= day; i++) {
+            if (i % 7 == 6 || i % 7 == 0) continue;
+            for (int j = 0; j < list.length; j++) {
+                if (i % list[j] == 0) {
+                    cnt++;
+                    break;
+                }
+            }
+        }
+        return cnt;
     }
 }
