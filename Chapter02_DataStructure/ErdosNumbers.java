@@ -52,4 +52,7 @@ Chen, X. 2
 package Chapter02_DataStructure;
 
 public class ErdosNumbers {
+    public static void main (String[] args) {
+
+    }
 }
