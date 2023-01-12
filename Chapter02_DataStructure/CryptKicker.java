@@ -39,8 +39,32 @@ dick and jane and puff and spot and yertle
 
 package Chapter02_DataStructure;
 
-public class CryptKicker {
-    public static void main(String[] args) {
+import java.util.Scanner;
 
+public class CryptKicker {
+    static String[] dic;
+    static char[] abc = new char[26];
+    static boolean[] dic_check;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        dic = new String[n];
+        dic_check = new boolean[n];
+        for (int i = 0; i < n; i++) {
+            dic[i] = sc.next();
+        }
+        String input;
+        String[] input_word;
+        while (sc.hasNextLine()) {
+            input = sc.nextLine();
+            input_word = input.split(" ");
+        }
+
+    }
+    static void search(String[] input) {
+        for (int i = 0; i < dic.length; i++) {
+
+        }
     }
 }
