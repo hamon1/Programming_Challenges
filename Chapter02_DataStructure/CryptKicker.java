@@ -60,11 +60,33 @@ public class CryptKicker {
             input = sc.nextLine();
             input_word = input.split(" ");
         }
-
     }
     static void search(String[] input) {
         for (int i = 0; i < dic.length; i++) {
+            String word = dic[i];
+            for (int j = 0; j < input.length; j++) {
+                String input_word = input[j];
+                int len = word.length();
+                if (dic_check[i] == false && len == input_word.length()) {
+                    for (int k = 0; k < len; k++) {
+                        char w = word.charAt(k);
+                        char iw = input_word.charAt(k);
+                        int idx = w - 97;
 
+                        if (abc[idx] != iw) {
+                            if ((int)abc[idx] == 0) {
+                                abc[idx] = iw;
+                            }
+                            else {
+                                abc = new char[26];
+                                j++;
+                            }
+                        }
+
+
+                    }
+                }
+            }
         }
     }
 }
