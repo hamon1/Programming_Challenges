@@ -1,4 +1,6 @@
 /*
+c13
+
 헝가리 출신의 수학자 폴 에르되시(Paul Erdos, 1913-1996)는 20세기의 가장 유명한 수학자 가운데 하나로 꼽힌다.
 에르되시와 함께 논문을 쓴 경험이 있는 수학자들도 존경을 받을 정도니 그의 명성을 짐작할 수 있을 것이다.
 
@@ -51,8 +53,12 @@ Chen, X. 2
 
 package Chapter02_DataStructure;
 
+import java.util.Scanner;
+
 public class ErdosNumbers {
     public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+
 
     }
 }
