@@ -57,24 +57,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ErdosNumbers {
-    static String erdos = "Erdos, P";
+    static String erdos = "Erdos, P.";
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> ppl = new ArrayList<>();
         ArrayList<Integer> ppl_Erdosnumber = new ArrayList<>();
         int scenario = sc.nextInt();
         for (int i = 0; i < scenario; i++) {
-            int p = sc.nextInt();
-            int n = sc.nextInt();
+            int p = sc.nextInt(); //number that title input
+            int n = sc.nextInt(); //number that ppl who will print
 
             String[] array;
             for (int j = 0; j < p; j++) {
                 int erd_number = 0;
                 String input = sc.nextLine();
-                array = input.split(".: ");
+                array = input.split(".: "); // divide ppl and title
 
-                String[] p_list = array[1].split("., ");
+                String[] p_list = array[1].split("., "); // divide ppl(except last '.')
 
+                //if Erdos is in this group, set group's Erodos number 1
                 for (int k = 0; k < p_list.length; k++) {
                     p_list[k] = p_list[k] + ".";
                     if ((p_list[k]).equals(erdos)) {
@@ -82,7 +83,9 @@ public class ErdosNumbers {
                     }
                 }
             }
+
             System.out.println("Scenario " + (i+1));
+            //check input's Erdos number and print it
             for (int j = 0; j < n; j++) {
                 String name = sc.nextLine();
 
