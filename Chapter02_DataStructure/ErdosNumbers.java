@@ -58,10 +58,11 @@ import java.util.Scanner;
 
 public class ErdosNumbers {
     static String erdos = "Erdos, P.";
+    static ArrayList<String> ppl = new ArrayList<>();
+    static ArrayList<Integer> ppl_Erdosnumber = new ArrayList<>();
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArrayList<String> ppl = new ArrayList<>();
-        ArrayList<Integer> ppl_Erdosnumber = new ArrayList<>();
+
         int scenario = sc.nextInt();
         for (int i = 0; i < scenario; i++) {
             int p = sc.nextInt(); //number that title input
@@ -75,13 +76,22 @@ public class ErdosNumbers {
 
                 String[] p_list = array[1].split("., "); // divide ppl(except last '.')
 
-                //if Erdos is in this group, set group's Erodos number 1
                 for (int k = 0; k < p_list.length; k++) {
-                    p_list[k] = p_list[k] + ".";
-                    if ((p_list[k]).equals(erdos)) {
-                        erd_number = 1;
+                    p_list[k] = p_list[k] + "."; //(+
+                    int num = ppl.size();
+                    boolean a = true;
+                    for (int m = 0; m < num; m++) {
+                        if(ppl.get(m).equals(p_list[k])) {
+                            a = false;
+                            break;
+                        }
                     }
+                    if (a) ppl.add(p_list[k]);
                 }
+
+
+
+
             }
 
             System.out.println("Scenario " + (i+1));
@@ -91,9 +101,28 @@ public class ErdosNumbers {
 
                 System.out.print(name + " ");
 
-
+                int erdos_number = 0;
+                for (int k = 0; k < ppl.size(); k++) {
+                    if (name.equals(ppl.get(k))) {
+                        erdos_number = ppl_Erdosnumber.get(k);
+                        if (erdos_number == 0) {
+                            System.out.println("infinity");
+                        }
+                        else {
+                            System.out.print(erdos_number);
+                        }
+                    }
+                }
             }
         }
 
+    }
+    static void check_erd(String[] p_list) {
+        //if Erdos is in this group, set group's Erodos number 1
+        for (int k = 0; k < p_list.length; k++) {
+            if ((p_list[k]).equals(erdos)) {
+
+            }
+        }
     }
 }
