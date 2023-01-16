@@ -37,7 +37,7 @@ Martin, G.
 4 3
 Smith, M.N., Martin, G., Erdos, P.: Newtonian forms of prime factors matrices
 Erdos, P., Reisig, W.: Stuttering in petri nets
-Smith, M.N, Chen, X.: First oder derivates in structured programming
+Smith, M.N., Chen, X.: First oder derivates in structured programming
 Jablonski, T., Hsueh, Z.: Selfstabilizing data structures
 Smith, M.N.
 Hsueh, Z.
@@ -59,6 +59,22 @@ public class ErdosNumbers {
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        int scenario = sc.nextInt();
+        for (int i = 0; i < scenario; i++) {
+            int p = sc.nextInt();
+            int n = sc.nextInt();
+
+            String[] array;
+            for (int j = 0; j < p; j++) {
+                String input = sc.nextLine();
+                array = input.split(": ");
+
+                String[] p_list = array[1].split("., ");
+            }
+            for (int j = 0; j < n; j++) {
+
+            }
+        }
 
     }
 }
