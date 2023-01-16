@@ -53,12 +53,15 @@ Chen, X. 2
 
 package Chapter02_DataStructure;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ErdosNumbers {
+    static String erdos = "Erdos, P";
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
-
+        ArrayList<String> ppl = new ArrayList<>();
+        ArrayList<Integer> ppl_Erdosnumber = new ArrayList<>();
         int scenario = sc.nextInt();
         for (int i = 0; i < scenario; i++) {
             int p = sc.nextInt();
@@ -66,12 +69,25 @@ public class ErdosNumbers {
 
             String[] array;
             for (int j = 0; j < p; j++) {
+                int erd_number = 0;
                 String input = sc.nextLine();
-                array = input.split(": ");
+                array = input.split(".: ");
 
                 String[] p_list = array[1].split("., ");
+
+                for (int k = 0; k < p_list.length; k++) {
+                    p_list[k] = p_list[k] + ".";
+                    if ((p_list[k]).equals(erdos)) {
+                        erd_number = 1;
+                    }
+                }
             }
+            System.out.println("Scenario " + (i+1));
             for (int j = 0; j < n; j++) {
+                String name = sc.nextLine();
+
+                System.out.print(name + " ");
+
 
             }
         }
