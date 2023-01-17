@@ -74,7 +74,7 @@ public class ErdosNumbers {
                 String input = sc.nextLine();
                 array = input.split(".: "); // divide ppl and title
 
-                String[] p_list = array[1].split("., "); // divide ppl(except last '.')
+                String[] p_list = array[0].split("., "); // divide ppl(except last '.')
 
                 for (int k = 0; k < p_list.length; k++) {
                     p_list[k] = p_list[k] + "."; //(+
@@ -86,7 +86,10 @@ public class ErdosNumbers {
                             break;
                         }
                     }
-                    if (a) ppl.add(p_list[k]);
+                    if (a) {
+                        ppl.add(p_list[k]);
+                        ppl_Erdosnumber.add(0);
+                    }
                 }
 
                 set_Erdos_number(p_list, check_erd(p_list));
