@@ -89,9 +89,7 @@ public class ErdosNumbers {
                     if (a) ppl.add(p_list[k]);
                 }
 
-
-
-
+                set_Erdos_number(p_list, check_erd(p_list));
             }
 
             System.out.println("Scenario " + (i+1));
@@ -117,11 +115,33 @@ public class ErdosNumbers {
         }
 
     }
-    static void check_erd(String[] p_list) {
+    static int check_erd(String[] p_list) {
         //if Erdos is in this group, set group's Erodos number 1
         for (int k = 0; k < p_list.length; k++) {
             if ((p_list[k]).equals(erdos)) {
-
+                return 1;
+            }
+        }
+        int num = 100000;
+        for (int i = 0; i < p_list.length; i++) {
+            for (int j = 0; j < ppl.size(); j++) {
+                int er = ppl_Erdosnumber.get(j);
+                if (p_list[i].equals(ppl.get(j)) && er != 0) {
+                    if (er < num) num = er;
+                }
+            }
+        }
+        if (num == 100000) return 0;
+        return num;
+    }
+    static void set_Erdos_number(String[] p_list, int num) {
+        if (num == 0) return;
+        for (int i = 0; i < p_list.length; i++) {
+            for (int j = 0; j < ppl.size(); j++) {
+                int er = ppl_Erdosnumber.get(j);
+                if (p_list[i].equals(ppl.get(j)) && (er > num || er == 0)) {
+                    ppl_Erdosnumber.set(j, num);
+                }
             }
         }
     }
