@@ -68,16 +68,22 @@ public class ErdosNumbers {
             int p = sc.nextInt(); //number that title input
             int n = sc.nextInt(); //number that ppl who will print
 
+            sc.nextLine();
             String[] array;
             for (int j = 0; j < p; j++) {
-                int erd_number = 0;
                 String input = sc.nextLine();
-                array = input.split(".: "); // divide ppl and title
 
-                String[] p_list = array[0].split("., "); // divide ppl(except last '.')
+                array = input.split(": "); // divide ppl and title
+
+                String[] p_list = array[0].split(", ");
 
                 for (int k = 0; k < p_list.length; k++) {
-                    p_list[k] = p_list[k] + "."; //(+
+                    if (k % 2 == 0) {
+                        p_list[k] = p_list[k] + ", " + p_list[k+1];
+                    }
+                    else {
+                        continue;
+                    }
                     int num = ppl.size();
                     boolean a = true;
                     for (int m = 0; m < num; m++) {
@@ -110,7 +116,7 @@ public class ErdosNumbers {
                             System.out.println("infinity");
                         }
                         else {
-                            System.out.print(erdos_number);
+                            System.out.println(erdos_number);
                         }
                     }
                 }
