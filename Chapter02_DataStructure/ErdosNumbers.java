@@ -143,6 +143,7 @@ public class ErdosNumbers {
         if (num == 100000) return 0;
         return num + 1;
     }
+    //setting Erdos number
     static void set_Erdos_number(String[] p_list, int num) {
         if (num == 0) return;
         for (int i = 0; i < p_list.length; i++) {
