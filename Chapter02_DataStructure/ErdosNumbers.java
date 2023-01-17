@@ -141,7 +141,7 @@ public class ErdosNumbers {
             }
         }
         if (num == 100000) return 0;
-        return num;
+        return num + 1;
     }
     static void set_Erdos_number(String[] p_list, int num) {
         if (num == 0) return;
