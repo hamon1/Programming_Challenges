@@ -36,8 +36,25 @@ public class WERTYU {
             String input = sc.nextLine();
 
             for (int i = 0; i < input.length(); i++) {
+                char c = input.charAt(i);
+                if (c == ' ') {
+                    result.add(' ');
+                    continue;
+                }
 
+                for (int j = 0; j < 3; j++) {
+                    for (int k = 0; k < key[j].length; k++) {
+                        if (c == key[j][k]) {
+                            result.add(key[j][k-1]);
+                            break;
+                        }
+                    }
+                }
             }
+            for (int i = 0; i < result.size(); i++) {
+                System.out.print(result.get(i));
+            }
+            System.out.println();
         }
     }
 }
