@@ -77,7 +77,11 @@ import java.util.Scanner;
 
 public class AutomatedJudgeScript {
     static String[] input1;
+    static String[] input1_space;
     static String[] input2;
+    static String[] input2_space;
+    static boolean whole_word;
+    static boolean exp_space;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -85,13 +89,19 @@ public class AutomatedJudgeScript {
             int n1 = sc.nextInt();
             input1 = new String[n1];
             for (int i = 0; i < n1; i++) {
-                input1[i] = sc.nextLine();
+                String input = sc.nextLine();
+                input1[i] = input;
+                input1_space[i] = input.replace(" ", "");
             }
             int n2 = sc.nextInt();
             input2 = new String[n2];
             for (int i = 0; i < n2; i++) {
-                input2[i] = sc.nextLine();
+                String input = sc.nextLine();
+                input2[i] = input;
+                input2_space[i] = input.replace(" ", "");
             }
+
+
         }
     }
 }
