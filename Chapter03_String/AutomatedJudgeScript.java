@@ -73,7 +73,25 @@ Run #6: Presentation Error
 
 package Chapter03_String;
 
-public class AutomatedJudgeScript {
-    public static void main(String[] args) {}
+import java.util.Scanner;
 
+public class AutomatedJudgeScript {
+    static String[] input1;
+    static String[] input2;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while(sc.hasNextLine()) {
+            int n1 = sc.nextInt();
+            input1 = new String[n1];
+            for (int i = 0; i < n1; i++) {
+                input1[i] = sc.nextLine();
+            }
+            int n2 = sc.nextInt();
+            input2 = new String[n2];
+            for (int i = 0; i < n2; i++) {
+                input2[i] = sc.nextLine();
+            }
+        }
+    }
 }
