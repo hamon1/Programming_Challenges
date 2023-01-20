@@ -1,5 +1,5 @@
 /*
-c19
+c19-clear
 두 개의 문자열 a, b가 주어졌을 때 글자의 순서를 바꿔서 a의 부분 문자열도 만들 수 있고 b의 부분 문자열도 만들 수 있는 것 중 가장 긴 문자열 x를 출력하라.
 
 <입력>
@@ -27,5 +27,42 @@ et
 
 package Chapter03_String;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
 public class CommonPermutation {
+    static boolean[] abc;
+    static ArrayList<Character> result;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (sc.hasNext()) {
+            abc = new boolean[26];
+            result = new ArrayList<>();
+            String a = sc.next();
+            String b = sc.next();
+
+            for (int i = 0; i < a.length(); i++) {
+                char c = a.charAt(i);
+                abc[(int)c - 97] = true;
+            }
+            for (int i = 0; i < b.length(); i++) {
+                boolean t = true;
+                char c = b.charAt(i);
+                for (int j = 0; j < result.size(); j++) {
+                    if (result.get(j) == c) t = false;
+                }
+                if (abc[(int)c - 97] && t) {
+                    result.add(c);
+                }
+            }
+            Collections.sort(result);
+
+            for (int i = 0; i < result.size(); i++) {
+                System.out.print(result.get(i));
+            }
+            System.out.println();
+        }
+    }
 }
