@@ -74,4 +74,6 @@ Run #6: Presentation Error
 package Chapter03_String;
 
 public class AutomatedJudgeScript {
+    public static void main(String[] args) {}
+
 }
