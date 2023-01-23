@@ -100,6 +100,22 @@ public class AutomatedJudgeScript {
                 input2[i] = input;
                 input2_space[i] = input.replace(" ", "");
             }
+            if (n1 == n2) {
+                String a;
+                String b;
+                for (int i = 0; i < n1; i++) {
+                    a = input1[i];
+                    b = input2[i];
+
+                    if (a.equals(b)) {
+                        whole_word = true;
+                    }
+                    else {
+                        whole_word = false;
+                        break;
+                    }
+                }
+            }
 
 
 
