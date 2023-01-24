@@ -116,6 +116,19 @@ public class AutomatedJudgeScript {
                     }
                 }
             }
+            else {
+                if (input1_space.length == input2_space.length) {
+                    for (int i = 0; i < input1_space.length; i++) {
+                        if (input1_space[i].equals(input2_space[i])) {
+
+                        }
+                        else {
+
+                        }
+                    }
+                }
+
+            }
 
 
 
