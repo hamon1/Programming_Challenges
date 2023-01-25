@@ -156,10 +156,56 @@ public class AutomatedJudgeScript {
 
         }
     }
-    static void check_accepted() {
+    static boolean check_accepted() {
+        if (input1.length == input2.length) { //두 String이 완전히 같은가 다른가
+            String a;
+            String b;
+            for (int i = 0; i < input1.length; i++) {
+                a = input1[i];
+                b = input2[i];
 
+                if (a.equals(b)) {
+                    whole_word = true;
+                }
+                else {
+                    whole_word = false;
+                    return false;
+                }
+            }
+        }
+        return true;
     }
-    static void check_presentation() {
+    static boolean check_presentation() {
+        if (input1_space.length == input2_space.length) { //공백을 없앤 후 비교
+            for (int i = 0; i < input1_space.length; i++) {
+                if (input1_space[i].equals(input2_space[i])) { //(공백 제외) 두 String이 같음
 
+                } else { //다른 경우, 다른 문자가 숫자인지 문자인지 구별
+                    //다른 문자가 숫자 인 경우, wrong answer / 문자인 경우, Presentation error
+                    //숫자 -> ('0' <= n <= '9')
+                    if (input1_space[i].length() == input2_space[i].length()) {
+                        for (int j = 0; j <= input1_space[i].length(); j++) {
+                            char c1 = input1_space[i].charAt(j);
+                            char c2 = input2_space[i].charAt(j);
+
+                            if (c1 == c2) {
+                                continue;
+                            } else {
+                                if ('0' <= c1 && c1 <= '9' && '0' <= c2 && c2 <= '9') {
+                                    whole_word = false;
+                                    exp_space = false;
+                                    return false;
+                                } else {
+                                    whole_word = false;
+                                    exp_space = true;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        return true;
     }
 }
