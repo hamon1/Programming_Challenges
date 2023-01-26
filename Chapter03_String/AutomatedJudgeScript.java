@@ -89,14 +89,18 @@ public class AutomatedJudgeScript {
         while(sc.hasNextLine()) {
             run_num++;
             int n1 = sc.nextInt();
+            sc.nextLine();
             input1 = new String[n1];
+            input1_space = new String[n1];
             for (int i = 0; i < n1; i++) {
                 String input = sc.nextLine();
                 input1[i] = input;
                 input1_space[i] = input.replace(" ", "");
             }
             int n2 = sc.nextInt();
+            sc.nextLine();
             input2 = new String[n2];
+            input2_space = new String[n2];
             for (int i = 0; i < n2; i++) {
                 String input = sc.nextLine();
                 input2[i] = input;
@@ -144,7 +148,7 @@ public class AutomatedJudgeScript {
                     //다른 문자가 숫자 인 경우, wrong answer / 문자인 경우, Presentation error
                     //숫자 -> ('0' <= n <= '9')
                     if (input1_space[i].length() == input2_space[i].length()) {
-                        for (int j = 0; j <= input1_space[i].length(); j++) {
+                        for (int j = 0; j < input1_space[i].length(); j++) {
                             char c1 = input1_space[i].charAt(j);
                             char c2 = input2_space[i].charAt(j);
 
