@@ -85,7 +85,9 @@ public class AutomatedJudgeScript {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        int run_num = 0;
         while(sc.hasNextLine()) {
+            run_num++;
             int n1 = sc.nextInt();
             input1 = new String[n1];
             for (int i = 0; i < n1; i++) {
@@ -100,58 +102,16 @@ public class AutomatedJudgeScript {
                 input2[i] = input;
                 input2_space[i] = input.replace(" ", "");
             }
-            if (n1 == n2) { //두 String이 완전히 같은가 다른가
-                String a;
-                String b;
-                for (int i = 0; i < n1; i++) {
-                    a = input1[i];
-                    b = input2[i];
+            check_accepted();
+            check_presentation();
 
-                    if (a.equals(b)) {
-                        whole_word = true;
-                    }
-                    else {
-                        whole_word = false;
-                        break;
-                    }
-                }
+            if (whole_word) {
+                System.out.println("Run #"+ run_num + ": Accepted");
             }
-            else { //두 String의 Presentation error 유무 확인
-                if (input1_space.length == input2_space.length) { //공백을 없앤 후 비교
-                    for (int i = 0; i < input1_space.length; i++) {
-                        if (input1_space[i].equals(input2_space[i])) { //(공백 제외) 두 String이 같음
-
-                        }
-                        else { //다른 경우, 다른 문자가 숫자인지 문자인지 구별
-                            //다른 문자가 숫자 인 경우, wrong answer / 문자인 경우, Presentation error
-                            //숫자 -> ('0' <= n <= '9')
-                            if(input1_space[i].length() == input2_space[i].length()) {
-                                for (int j = 0; j <= input1_space[i].length(); j++) {
-                                    char c1 = input1_space[i].charAt(j);
-                                    char c2 = input2_space[i].charAt(j);
-
-                                    if (c1 == c2) {
-                                        continue;
-                                    }
-                                    else {
-                                        if ('0' <= c1 && c1 <= '9' && '0' <= c2 && c2 <= '9') {
-                                            whole_word = false;
-                                            exp_space = false;
-                                            //함수로 옮겨서 return 으로 바로 결과 출력하자.
-                                        }
-                                        else {
-
-                                        }
-                                    }
-                                }
-                            }
-
-                        }
-                    }
-                }
-
+            else {
+                if (exp_space) System.out.println("Run #"+ run_num + ": Presentation Error");
+                else System.out.println("Run #"+ run_num + ": Wrong Answer");
             }
-
 
 
         }
