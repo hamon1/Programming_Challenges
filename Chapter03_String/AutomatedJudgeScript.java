@@ -117,7 +117,6 @@ public class AutomatedJudgeScript {
                 else System.out.println("Run #"+ run_num + ": Wrong Answer");
             }
 
-
         }
     }
     static boolean check_accepted() {
