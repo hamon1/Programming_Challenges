@@ -106,8 +106,10 @@ public class AutomatedJudgeScript {
                 input2[i] = input;
                 input2_space[i] = input.replace(" ", "");
             }
-            check_accepted();
-            check_presentation();
+            boolean a = check_accepted();
+            if (a == false) {
+                check_presentation();
+            }
 
             if (whole_word) {
                 System.out.println("Run #"+ run_num + ": Accepted");
@@ -131,6 +133,7 @@ public class AutomatedJudgeScript {
                     whole_word = true;
                 }
                 else {
+
                     whole_word = false;
                     return false;
                 }
@@ -147,11 +150,14 @@ public class AutomatedJudgeScript {
             for (int i = 0; i < input1_space.length; i++) {
                 if (input1_space[i].equals(input2_space[i])) { //(공백 제외) 두 String이 같음
                     exp_space = true;
-                    return true;
                 } else { //다른 경우, 다른 문자가 숫자인지 문자인지 구별
                     //다른 문자가 숫자 인 경우, wrong answer / 문자인 경우, Presentation error
                     //숫자 -> ('0' <= n <= '9')
-                    if (input1_space[i].length() == input2_space[i].length()) {
+                    if (input1_space[i].length() != input2_space[i].length()) {
+                        exp_space = false;
+                        return false;
+                    }
+                    else {
                         for (int j = 0; j < input1_space[i].length(); j++) {
                             char c1 = input1_space[i].charAt(j);
                             char c2 = input2_space[i].charAt(j);
@@ -164,6 +170,7 @@ public class AutomatedJudgeScript {
                                     exp_space = false;
                                     return false;
                                 } else {
+
                                     whole_word = false;
                                     exp_space = true;
                                 }
