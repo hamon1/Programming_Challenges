@@ -136,13 +136,18 @@ public class AutomatedJudgeScript {
                 }
             }
         }
+        else {
+            whole_word = false;
+            return false;
+        }
         return true;
     }
     static boolean check_presentation() {
         if (input1_space.length == input2_space.length) { //공백을 없앤 후 비교
             for (int i = 0; i < input1_space.length; i++) {
                 if (input1_space[i].equals(input2_space[i])) { //(공백 제외) 두 String이 같음
-
+                    exp_space = true;
+                    return true;
                 } else { //다른 경우, 다른 문자가 숫자인지 문자인지 구별
                     //다른 문자가 숫자 인 경우, wrong answer / 문자인 경우, Presentation error
                     //숫자 -> ('0' <= n <= '9')
@@ -168,6 +173,11 @@ public class AutomatedJudgeScript {
 
                 }
             }
+        }
+        else {
+            whole_word = false;
+            exp_space = false;
+            return false;
         }
         return true;
     }
