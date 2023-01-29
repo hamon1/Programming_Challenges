@@ -64,5 +64,6 @@ public class CommonPermutation {
             }
             System.out.println();
         }
+        sc.close();
     }
 }

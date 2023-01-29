@@ -45,4 +45,7 @@ No solution.
 package Chapter03_String;
 
 public class Doublets {
+    public static void main (String[] args) {
+
+    }
 }

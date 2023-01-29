@@ -39,5 +39,21 @@ c22
 
 package Chapter03_String;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class FileFragmentation {
+    static ArrayList<String> file_piece;
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int testcase_num = sc.nextInt();
+
+        for (int i = 0; i < testcase_num; i++) {
+            file_piece = new ArrayList<>();
+            while(sc.hasNext()) {
+                file_piece.add(sc.next());
+            }
+        }
+    }
 }
