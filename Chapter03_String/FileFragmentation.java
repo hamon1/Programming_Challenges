@@ -44,16 +44,26 @@ import java.util.Scanner;
 
 public class FileFragmentation {
     static ArrayList<String> file_piece;
+    static int[] file_piece_max;
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
-
         int testcase_num = sc.nextInt();
+        sc.nextLine();
 
         for (int i = 0; i < testcase_num; i++) {
+            sc = new Scanner(System.in);
             file_piece = new ArrayList<>();
             while(sc.hasNext()) {
                 file_piece.add(sc.next());
             }
+            int file_piece_size = file_piece.size();
+            file_piece_max = new int[file_piece_size];
+            for (int j = 0; j < file_piece_size; j++) {
+                file_piece_max[j] = (file_piece.get(j)).length();
+            }
+            sc.close();
         }
+
+
     }
 }
