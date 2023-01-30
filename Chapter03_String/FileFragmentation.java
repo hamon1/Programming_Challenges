@@ -61,9 +61,30 @@ public class FileFragmentation {
             for (int j = 0; j < file_piece_size; j++) {
                 file_piece_max[j] = (file_piece.get(j)).length();
             }
+            int min = min();
+            int max = max();
+            int file_full_size = min + max;
+
+
             sc.close();
         }
 
 
+    }
+    static int min() {
+        int min = 100000;
+        for (int i = 0; i < file_piece_max.length; i++) {
+            int num = file_piece_max[i];
+            if (min > num) min = num;
+        }
+        return min;
+    }
+    static int max() {
+        int max = -1;
+        for (int i = 0; i < file_piece_max.length; i++) {
+            int num = file_piece_max[i];
+            if (max < num) max = num;
+        }
+        return max;
     }
 }
