@@ -65,10 +65,18 @@ public class FileFragmentation {
             int max = max();
             int file_full_size = min + max;
 
+            for (int j = 0; j < file_piece_size; j++) {
+                if (file_piece_max[i] == min) {
+
+                }
+            }
 
             sc.close();
         }
 
+
+    }
+    static void search_file() {
 
     }
     static int min() {
