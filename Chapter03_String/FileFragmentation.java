@@ -65,9 +65,10 @@ public class FileFragmentation {
             int max = max();
             int file_full_size = min + max;
 
+            //작은 것 부터 총 합이 file_full_size가 되도록 탐색
             for (int j = 0; j < file_piece_size; j++) {
                 if (file_piece_max[i] == min) {
-
+                    
                 }
             }
 
