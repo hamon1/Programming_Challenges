@@ -66,6 +66,7 @@ public class FileFragmentation {
             int file_full_size = min + max;
 
             //작은 것 부터 총 합이 file_full_size가 되도록 탐색
+            //원본 파일 차례대로 탐색 후 search_file()
             for (int j = 0; j < file_piece_size; j++) {
                 if (file_piece_max[i] == min) {
                     
@@ -77,8 +78,8 @@ public class FileFragmentation {
 
 
     }
-    static void search_file() {
-
+    static void search_file(String original_file) {
+        //원본을 받아 비교 및 탐색
     }
     static int min() {
         int min = 100000;
