@@ -32,6 +32,7 @@ public class BJ_1260_Graph {
         check.clear();
 
 
+        BFS(start_v);
 
     }
 
@@ -69,7 +70,6 @@ public class BJ_1260_Graph {
     static int BFS (int v) {
 
 
-
         return 0;
     }
 
@@ -82,4 +82,16 @@ public class BJ_1260_Graph {
         1 4
         2 4
         3 4
+ */
+/*
+5 5 3
+5 4
+5 2
+1 2
+3 4
+3 1
+ */
+/*
+1000 1 1000
+999 1000
  */
